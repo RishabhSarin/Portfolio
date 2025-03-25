@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './flickity.css';
+
+:root {
+	--biege: #F5F5DC;
+}
+* {
+	scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+	display: none;
+}
+body {
+	color: var(--clu-graytxt);
+}
+.platform-app .app\:hidden,
+.platform-pwa .pwa\:hidden,
+.platform-web .web\:hidden {
+	display:none;
+}
+/* .no-scrollbar {
+	scrollbar-width: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+} */
+[x-cloak] { display:none !important; }

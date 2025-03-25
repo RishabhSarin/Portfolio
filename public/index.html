@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html 
+    ang="en" 
+    x-data="{ darkMode: document.documentElement.classList.contains('dark'), scrolled: false }"
+    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" 
+    :class="{ 'dark': darkMode }"
+>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rishabh Sarin</title>
+    <link rel="icon" type="assets/favicon.ico" href="assets/favicon.ico">
+    <script>
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = { darkMode: 'class',};
+    </script>
+    <link rel="stylesheet" href="assets/css/tailwind.css">
+
+    <!-- Alpine.js and Plugins -->
+    <script defer src="assets/js/app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@aerni/alpine-resize@1.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/morph@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body 
+    x-cloak
+    class="transition-all duration-200 font-sans antialiased overflow-auto bg-slate-800 dark:bg-black relative"
+>
+    <div class="h-screen flex flex-col overflow-hidden bg-slate-800 dark:bg-black">
+        <!-- Fixed Header with Reusable Dark Mode Toggle -->
+        <header class="h-16  px-4 py-2 flex justify-between items-center bg-slate-800 dark:bg-black">
+            <div class="flex items-center space-x-2" :class="{ 'opacity-0': !scrolled }">
+                <img src="assets/images/phoenix-minimal.png" alt="Logo" class="h-8 w-auto">
+                <span class="shrink-0 text-lg font-bold text-white">Rishabh Sarin</span>
+            </div>
+            <!-- Dark Mode Toggle Component -->
+            <button class="p-2 rounded-full border border-gray-300 dark:border-gray-700 md:hover:shadow-md focus:outline-none transition-colors duration-300"
+                    @click="darkMode = !darkMode">
+            <template x-if="!darkMode">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 text-white">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+            </template>
+            <template x-if="darkMode">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 text-slate-400">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+            </template>
+            </button>
+        </header>
+        
+        <div class="flex-1 flex grow overflow-hidden transition-all transform ease-in-out duration-300">
+            <main
+                x-ref="scrollContainer" 
+                x-init="$refs.scrollContainer.addEventListener('scroll', () => { scrolled = $refs.scrollContainer.scrollTop > 50 })" 
+                class="flex-1 relative overflow-y-auto overflow-x-hidden"
+            >
+                <div class="flex flex-col gap-8 pt-8 pb-24">
+                    <!-- Hero Section -->
+                    <section class="mx-auto max-w-7xl px-6">
+                        <h2 class="text-base/7 font-semibold text-indigo-400">Let's connect</h2>
+                        <p class="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-white sm:text-5xl">Hello, I'm Rishabh Sarin</p>
+                        <div class="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6">
+                            <!-- About Section -->
+                            <div class="lg:col-span-3 flex flex-col">
+                                <div class="p-4 text-center">
+                                    <div class="relative inline-block">
+                                        <img src="assets/images/phoenix-minimal.png" alt="Big Logo"
+                                            class="mx-auto mb-4 h-64 relative z-10 transition-all duration-500">
+                                        <div class="absolute inset-0 z-0 rounded-full bg-amber-500 opacity-40 dark:opacity-30 blur-xl"></div>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="text-sm font-semibold text-gray-400">About</h3>
+                                    <p class="mt-2 prose font-medium tracking-tight text-white">
+                                        Software Developer | Computer Science and Physics | Cosmology Enthusiast
+                                    </p>
+                                    <p class="mt-2 prose text-gray-400">
+                                        I am a software developer specializing in full-stack development, AI integration, and mobile app solutions.
+                                        With a strong foundation in computer science and physics, I have experience leading projects that enhance user
+                                        engagement and operational efficiency. Passionate about problem-solving, automation, and technology-driven
+                                        solutions, I thrive in collaborative environments that push the boundaries of innovation.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Contact Section -->
+                            <div class="lg:col-span-3 flex flex-col mb-4 md:mb-0">
+                                <div class="p-4">
+                                    <h3 class="text-sm font-semibold text-gray-400">Contact</h3>
+                                    <p class="mt-2 prose font-medium tracking-tight text-white">
+                                        I'd love to connect with you! Whether you have a question, an idea, or just want to say hello, feel free to reach out through any of the platforms below. 
+                                    </p>
+                                </div>
+                                <div class="w-full max-w-md space-y-4 mx-auto">
+                                    <template x-for="link in $store.home.links" :key="link.name">
+                                        <a 
+                                            :href="link.url" 
+                                            target="_blank" 
+                                            :download="link.url.endsWith('.pdf') ? '' : null"
+                                            class="flex items-center justify-between bg-white/90 dark:bg-gray-800/90 p-4 rounded-xl shadow-lg md:hover:shadow-xl transition-transform duration-300 ease-in-out md:hover:scale-110"
+                                        >
+                                            <div class="flex items-center gap-3">
+                                                <span x-html="link.icon" :alt="link.name" class="w-6 h-6"></span>
+                                                <span class="text-sm md:text-base text-gray-900 dark:text-gray-100" x-text="link.name"></span>
+                                            </div>
+                                            <span x-html="link.url_icon"></span>  
+                                        </a>
+                                    </template>
+                                </div>
+                            </div>
+                            <!-- /Contact Section -->
+                            <!-- Logo Section -->
+                            <div class="lg:col-span-6 flex flex-col">
+                                <div class="p-4 flex justify-center">
+                                    <img src="assets/images/clu-logo.png" alt="CLU Logo" class="h-16 w-auto">
+                                </div>
+                            </div>
+                            <!-- /Logo Section -->
+                            <!-- Education -->
+                            <div class="lg:col-span-3 flex flex-col">
+                                <div class="p-6">
+                                    <h3 class="text-sm font-semibold text-gray-400">Education</h3>
+                                    <p class="mt-2 text-lg font-medium tracking-tight text-white">BS in Computer Science and Physics</p>
+                                    <p class="text-sm text-gray-400">California Lutheran University</p>
+                                    <p class="text-sm text-gray-400">August 2019 - May 2022</p>
+                                    <p class="mt-2 text-lg font-medium tracking-tight text-white">BTECH in Computer Engineering</p>
+                                    <p class="text-sm text-gray-400">Mukesh Patel School of technology Management & Engineering - India</p>
+                                    <p class="text-sm text-gray-400">Transferred to CLU after completing first year 2018-2019</p>
+                                </div>
+                            </div>
+                            <!-- /Education -->
+                            <!-- Experience -->
+                            <div class="lg:col-span-3 flex flex-col">
+                                <div class="p-6">
+                                    <h3 class="text-sm font-semibold text-gray-400">Experience</h3>
+                                    <p class="inline-flex items-center  gap-x-1.5 mt-2 text-lg font-medium tracking-tight text-white">Programmer I - Enterprise Applications
+                                        <span>
+                                            <svg class="animate-pulse size-1.5 fill-green-400" viewBox="0 0 6 6" aria-hidden="true">
+                                                <circle cx="3" cy="3" r="3" />
+                                            </svg>
+                                        </span>
+                                    </p>
+                                    <p class="text-sm text-gray-400">California Lutheran University</p>
+                                    <p class="text-sm text-gray-400">Aug 2022 - present</p>
+                                    <p class="mt-2 text-lg font-medium tracking-tight text-white">Student Junior Developer</p>
+                                    <p class="text-sm text-gray-400">California Lutheran University</p>
+                                    <p class="text-sm text-gray-400">March 2022 - May 2022</p>
+                                    <p class="mt-2 text-lg font-medium tracking-tight text-white">Student Technician</p>
+                                    <p class="text-sm text-gray-400">California Lutheran University</p>
+                                    <p class="text-sm text-gray-400">May 2021 - March 2022</p>
+                                </div>
+                            </div>
+                            <!-- /Experience -->
+                        </div>
+                    </section>
+
+                    <section class="container mx-auto px-6">
+                        <!-- Header of the news section -->
+                        <div class="max-w-7xl mb-6 flex items-baseline justify-between mx-auto">
+                            <div>
+                                <h2 class="text-2xl font-bold text-white">Work & Projects</h2>
+                            </div>
+                        </div>
+                        
+                        <!-- Grid of news cards -->
+                        <div class="max-w-7xl grid w-full grid-cols-1 gap-4 lg:grid-cols-2 mx-auto" x-data="$store.home">
+                            <template x-for="project in $store.home.projects" :key="project.id">
+                                <a :href="project.link" class="transition ease-in-out duration-250 group block" :aria-label="project.alt">
+                                    <div class="flex w-full items-center overflow-hidden">
+                                        <!-- Image container -->
+                                        <div class="relative aspect-square flex-[0_0_7.5rem] md:flex-[0_0_11.563rem]">
+                                            <div class="absolute inset-0 w-full rounded-md" style="aspect-ratio: 1 / 1;"></div>
+                                                <div class="relative mx-auto overflow-hidden transition-opacity rounded-md ease-in-out duration-300 md:group-hover:[&_img]:scale-105" style="max-width: 100%;">
+                                                    <div class="relative w-full" style="aspect-ratio: 1 / 1;">
+                                                        <div class="relative h-full w-full overflow-hidden bg-transparent transition-colors ease-in-out duration-300">
+                                                            <img 
+                                                                :alt="project.alt" 
+                                                                loading="lazy" 
+                                                                decoding="async" 
+                                                                class="object-cover object-center absolute h-full w-full inset-0" 
+                                                                :src="project.image"
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <!-- Text container -->
+                                        <div class="pl-2 lg:pl-4 text-blue-500 xl:pr-8 flex-auto">
+                                            <div>
+                                                <div class="mb-1 text-lg font-semibold" x-text="project.title"></div>
+                                                <p class="text-sm flex flex-wrap gap-1">
+                                                <template x-if="project.institution">
+                                                    <span class="" x-html="project.institution"></span>
+                                                </template>
+                                                <span class="flex flex-wrap gap-1">
+                                                    <span class="text-gray-400 whitespace-nowrap" x-text="project.description"></span>
+                                                </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </template>
+                        </div>
+                    </section> 
+                </div>
+                <!-- Footer -->
+                <footer class="text-center text-white/80 text-sm py-4 mt-16">
+                    <p>&copy; 2025 Rishabh Sarin. All rights reserved</p>
+                    <a class="text-xs underline" target="_blank" href="https://www.flaticon.com/free-icons/phoenix" title="phoenix icons">
+                    Phoenix icons created by Freepik - Flaticon
+                    </a>
+                </footer>       
+            </main>
+        </div>
+    </div>
+</body>
+</html>
